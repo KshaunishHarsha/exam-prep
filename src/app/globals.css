@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+/* Design tokens. Light is the default; dark applies via prefers-color-scheme or the manual toggle. */
+:root {
+  color-scheme: light;
+  --bg: #f5f5f7;
+  --card: #ffffff;
+  --card2: #f2f2f7;
+  --ink: #1d1d1f;
+  --ink2: #636366;
+  --ink3: #c7c7cc;
+  --ink3b: #aeaeb2;
+  --line: rgba(0, 0, 0, 0.07);
+  --green: #34c759;
+  --green-ink: #248a3d;
+  --green-tint: rgba(52, 199, 89, 0.13);
+  --orange: #ff9500;
+  --orange-ink: #a64100;
+  --orange-tint: rgba(255, 149, 0, 0.11);
+  --amber-ink: #8a5a00;
+  --amber-tint: rgba(255, 204, 0, 0.26);
+  --purple-ink: #8944ab;
+  --purple-tint: rgba(175, 82, 222, 0.11);
+  --teal-ink: #0071a4;
+  --teal-tint: rgba(50, 173, 230, 0.13);
+  --red: #ff3b30;
+  --accent: #007aff;
+  --accent-tint: rgba(0, 122, 255, 0.1);
+  --accent-glow: rgba(0, 122, 255, 0.1);
+  /* AA-contrast variants: accent as small text on tints, and as a fill behind white text */
+  --accent-ink: #0062cc;
+  --accent-solid: #0062cc;
+  --red-ink: #d70015;
+  --red-solid: #d70015;
+  --on-orange: #1d1d1f;
+  --shadow: 0 0.5px 1px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.03);
+  --bar: rgba(255, 255, 255, 0.82);
+  --dim: rgba(0, 0, 0, 0.28);
+  --ring-track: rgba(0, 0, 0, 0.06);
+  --seg: rgba(118, 118, 128, 0.12);
+  --seg-on: #ffffff;
+  --hover: rgba(0, 0, 0, 0.03);
+  --done-bg: rgba(255, 255, 255, 0.6);
+  --radius-card: 14px;
+  --radius-day: 16px;
+  --radius-panel: 18px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #000000;
+    --card: #1c1c1e;
+    --card2: #2c2c2e;
+    --ink: #f5f5f7;
+    --ink2: #98989d;
+    --ink3: #48484a;
+    --ink3b: #636366;
+    --line: rgba(255, 255, 255, 0.08);
+    --green: #30d158;
+    --green-ink: #30d158;
+    --green-tint: rgba(48, 209, 88, 0.16);
+    --orange: #ff9f0a;
+    --orange-ink: #ffb340;
+    --orange-tint: rgba(255, 159, 10, 0.15);
+    --amber-ink: #ffd60a;
+    --amber-tint: rgba(255, 214, 10, 0.15);
+    --purple-ink: #da8fff;
+    --purple-tint: rgba(191, 90, 242, 0.2);
+    --teal-ink: #64d2ff;
+    --teal-tint: rgba(100, 210, 255, 0.15);
+    --red: #ff453a;
+    --accent: #0a84ff;
+    --accent-tint: rgba(10, 132, 255, 0.2);
+    --accent-glow: rgba(10, 132, 255, 0.16);
+    --accent-ink: #64b5ff;
+    --accent-solid: #0a6fe0;
+    --red-ink: #ff6961;
+    --red-solid: #d92d20;
+    --shadow: none;
+    --bar: rgba(28, 28, 30, 0.8);
+    --dim: rgba(0, 0, 0, 0.6);
+    --ring-track: rgba(255, 255, 255, 0.1);
+    --seg: rgba(118, 118, 128, 0.24);
+    --seg-on: #636366;
+    --hover: rgba(255, 255, 255, 0.04);
+    --done-bg: rgba(28, 28, 30, 0.55);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --card: #1c1c1e;
+  --card2: #2c2c2e;
+  --ink: #f5f5f7;
+  --ink2: #98989d;
+  --ink3: #48484a;
+  --ink3b: #636366;
+  --line: rgba(255, 255, 255, 0.08);
+  --green: #30d158;
+  --green-ink: #30d158;
+  --green-tint: rgba(48, 209, 88, 0.16);
+  --orange: #ff9f0a;
+  --orange-ink: #ffb340;
+  --orange-tint: rgba(255, 159, 10, 0.15);
+  --amber-ink: #ffd60a;
+  --amber-tint: rgba(255, 214, 10, 0.15);
+  --purple-ink: #da8fff;
+  --purple-tint: rgba(191, 90, 242, 0.2);
+  --teal-ink: #64d2ff;
+  --teal-tint: rgba(100, 210, 255, 0.15);
+  --red: #ff453a;
+  --accent: #0a84ff;
+  --accent-tint: rgba(10, 132, 255, 0.2);
+  --accent-glow: rgba(10, 132, 255, 0.16);
+  --accent-ink: #64b5ff;
+  --accent-solid: #0a6fe0;
+  --red-ink: #ff6961;
+  --red-solid: #d92d20;
+  --shadow: none;
+  --bar: rgba(28, 28, 30, 0.8);
+  --dim: rgba(0, 0, 0, 0.6);
+  --ring-track: rgba(255, 255, 255, 0.1);
+  --seg: rgba(118, 118, 128, 0.24);
+  --seg-on: #636366;
+  --hover: rgba(255, 255, 255, 0.04);
+  --done-bg: rgba(28, 28, 30, 0.55);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-card2: var(--card2);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-ink3: var(--ink3);
+  --color-ink3b: var(--ink3b);
+  --color-line: var(--line);
+  --color-green: var(--green);
+  --color-green-ink: var(--green-ink);
+  --color-green-tint: var(--green-tint);
+  --color-orange: var(--orange);
+  --color-orange-ink: var(--orange-ink);
+  --color-orange-tint: var(--orange-tint);
+  --color-amber-ink: var(--amber-ink);
+  --color-amber-tint: var(--amber-tint);
+  --color-purple-ink: var(--purple-ink);
+  --color-purple-tint: var(--purple-tint);
+  --color-teal-ink: var(--teal-ink);
+  --color-teal-tint: var(--teal-tint);
+  --color-red: var(--red);
+  --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-solid: var(--accent-solid);
+  --color-red-ink: var(--red-ink);
+  --color-red-solid: var(--red-solid);
+  --color-on-orange: var(--on-orange);
+  --color-ring-track: var(--ring-track);
+  --color-seg: var(--seg);
+  --color-seg-on: var(--seg-on);
+  --color-hover: var(--hover);
+  --color-done-bg: var(--done-bg);
+  --color-bar: var(--bar);
+  --color-dim: var(--dim);
+  --shadow-card: var(--shadow);
+  --radius-card: 14px;
+  --radius-day: 16px;
+  --radius-panel: 18px;
+  --breakpoint-d: 720px; /* the design's mobile/desktop switch */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", var(--font-inter), system-ui, sans-serif;
+  --ease-spring: cubic-bezier(0.34, 1.8, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.3s, color 0.3s;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Extends the tappable area of small controls to 44px without changing how they look. */
+@layer components {
+  .hit {
+    position: relative;
+  }
+  .hit::after {
+    content: "";
+    position: absolute;
+    inset: -8px -4px;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@keyframes ept-burst {
+  0% { transform: translate(-50%, -50%) scale(0.4) rotate(0); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1) rotate(var(--r)); opacity: 0; }
+}
+@keyframes ept-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ept-up { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes ept-pop { 0% { transform: scale(0.6); } 60% { transform: scale(1.12); } 100% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
